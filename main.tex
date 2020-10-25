@@ -141,7 +141,7 @@ A particle in 3D confined to move along a moving wire, is subject to two rheonom
 \end{eg}
 \begin{prop}
 The Euler-Lagrange equations with constraints $f_m(\mathbf{r_1},\dots,\mathbf{r_N},t)=0$ are
-$$\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\mathbf{\dot{r}_i}}-\frac{\partial\mathcal{L}}{\partial\mathbf{r_i}}-\sum_{i=1}^M\lambda_m\frac{\partial f_m}{\partial\mathbf{r_i}}$$
+$$\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\mathbf{\dot{r}_i}}-\frac{\partial\mathcal{L}}{\partial\mathbf{r_i}}-\sum_{i=1}^M\lambda_m\frac{\partial f_m}{\partial\mathbf{r_i}}=0$$
 for the $i$th particle. The last term is associated with forces of constraint, which can be eliminated algebraically as in the Newtonian method.
 \end{prop}
 \begin{proof}
@@ -160,7 +160,7 @@ Consider a 2D simple pendulum of length $l$. The constraints $f=|\mathbf{r}|-l=0
 \begin{eg}
 Examples of non-holonomic constraints: inequalities, for example, particle bouncing on a table, i.e. $z\geq0$, non-integrable constraints involving velocities, for example, a sphere or a disc rolling on a surface. Surprisingly, for the case of a cylinder, the problem is integrable.
 \end{eg}
-\subsubsection*{Symmetries and Conservation Laws}
+\subsubsection{Symmetries and Conservation Laws}
 \begin{defi}[Cyclic coordinate]
 If $\mathcal{L}$ does not depend on a particular coordinate, then that coordinate is ignorable and is known as a cyclic coordinate.
 \end{defi}
@@ -184,6 +184,39 @@ We need to have $\sum_{i=1}^N\frac{\partial\mathcal{L}}{\partial\dot{q}_i}\dot{q
 $$\sum_{i=1}^n\dot{q}_i\frac{\partial T}{\partial q_i}=2T$$
 We thus have $2T-\mathcal{L}=2T-(T-V)=T+V=E$, a constant. 
 \end{proof}
+\subsubsection{Noether's Theorem}
+\begin{thm}[Noether's theorem]
+If the Lagrangian is invariant under a continuous symmetry transformation then there is a conserved quantity associated with that symmetry.
+\end{thm}
+\begin{proof}
+Let $s$ be a parameter of the continuous symmetry transformation $\mathbf{q}(t)\mapsto\mathbf{Q}(s,t)$ such that $s=0$ gives the identity: $\mathbf{Q}(0,t)=\mathbf{q}(t)$. By hypothesis, $\mathcal{L}(\mathbf{Q},\mathbf{\dot{Q}},t)=\mathcal{L}(\mathbf{q},\mathbf{\dot{q}},t)$ where $\mathbf{\dot{Q}}=\frac{\partial\mathbf{Q}}{\partial t}$. Differentiate with respect to $s$ at constant $t$:
+$$0=\frac{\partial\mathcal{L}}{\partial s}=\frac{\partial\mathcal{L}}{\partial\mathbf{Q}}\cdot\frac{\partial\mathbf{Q}}{\partial s}+\frac{\partial\mathcal{L}}{\partial\mathbf{\dot{Q}}}\cdot\frac{\partial\mathbf{\dot{Q}}}{\partial s}$$
+Now, evaluate this at $s=0$, where $\mathbf{Q}=\mathbf{q}$ here and $\mathbf{\dot{Q}}=\mathbf{\dot{q}}$, and so
+$$\frac{\partial\mathcal{L}}{\partial\mathbf{q}}\cdot\frac{\partial\mathbf{Q}}{\partial s}\bigg|_{s=0}+\frac{\partial\mathcal{L}}{\partial\mathbf{\dot{q}}}\cdot\frac{\partial\mathbf{\dot{Q}}}{\partial s}\bigg|_{s=0}=0$$
+But, by Lagrange equation,
+$$\frac{\partial\mathcal{L}}{\partial\mathbf{q}}=\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\mathbf{\dot{q}}}\implies0=\frac{d}{dt}\bigg(\frac{\partial\mathcal{L}}{\partial\mathbf{\dot{q}}}\cdot\frac{\partial\mathbf{Q}}{\partial s}\bigg|_{s=0}\bigg)$$
+i.e. the conserved quantity is $\frac{\partial\mathcal{L}}{\partial\mathbf{\dot{q}}}\cdot\frac{\partial\mathbf{Q}}{\partial s}|_{s=0}$.
+\end{proof}
+\begin{eg}
+For an isolated $N$-body system with potential forces, the Lagrangian is
+$$\mathcal{L}=T-V=\sum_{i=1}^N\frac{1}{2}m_i|\mathbf{\dot{r}_i}|^2-V(\mathbf{r_1},...,\mathbf{r_N})$$
+\begin{itemize}
+\item If $V$ depends only on the relative positions $\mathbf{r_{ij}}=\mathbf{r_j}-\mathbf{r_i}$, then the Lagrangian $\mathcal{L}$ is invariant under a translation of the system $\mathbf{r_i}\mapsto\mathbf{r_i}+s\mathbf{n}$, where $\mathbf{n}$ is any unit vector, and then $s$ is a continuous symmetry parameter. Noether's Theorem gives us the conserved quantity
+$$\frac{\partial\mathcal{L}}{\partial\mathbf{\dot{q}}}\cdot\frac{\partial\mathbf{Q}}{\partial s}\bigg|_{s=0}=\sum_{i=1}^Nm_i\mathbf{\dot{r}_i}\cdot\mathbf{n}=\mathbf{P}\cdot\mathbf{n}$$
+which is the component of total linear momentum in direction $\mathbf{n}$.
+\item If $V$ depends only on the magnitude $|\mathbf{r_{ij}}|$ of the relative positions, then $\mathcal{L}$ is invariant under a rotation of the system. Under an infinitesimal rotation through angle $s$ about the unit vector $\mathbf{n}$, 
+$$\mathbf{r_i}\mapsto\mathbf{r_i}+s\mathbf{n}\times\mathbf{r_i}$$
+Noether's Theorem gives us the conserved quantity 
+$$\frac{\partial\mathcal{L}}{\partial\mathbf{\dot{q}}}\cdot\frac{\partial\mathbf{Q}}{\partial s}\bigg|_{s=0}=\sum_{i=1}^Nm_i\mathbf{\dot{r}_i}\cdot(\mathbf{n}\times\mathbf{r_i})=\sum_{i=1}^Nm_i(\mathbf{r_i}\times\mathbf{\dot{r}_i})\cdot\mathbf{n}=\mathbf{L}\cdot\mathbf{n}$$
+which is the component of total angular momentum in the direction $\mathbf{n}$. 
+\end{itemize}
+\end{eg}
+\begin{remarks}
+Thus, the translation symmetry is associated with the homogeneity of space is related to the conservation of linear momentum; the rotational symmetry is associated with the isotropy of space is related to the conservation of angular momentum.
+\end{remarks}
+\begin{remarks}
+Autonomous systems have Lagrangians that do not explicitly depend on time, i.e. $\frac{\partial\mathcal{L}}{\partial t}=0$. As we have seen, this implies conservation of energy. Energy is thus related to time, as momentum is related to space. This is subtly related to 4-vectors in SR.
+\end{remarks}
 \newpage
 \begin{qns}
 A uniform circular disc of mass $2m$ and radius $a$ is mounted on an axle through its centre so that it can rotate without friction in a vertical plane. A point mass $m$ is fixed at point P on the lower edge of the disc. A light elastic string with force constant $k$ is also attached to $P$, runs over the circumference of the disc without friction, passes the topmost point and hangs down vertically. At the bottom end of the string a mass $0.5m$ is attached.
@@ -393,7 +426,7 @@ The Poisson bracket of the canonical variables $\mathbf{q}$ and $\mathbf{p}$ are
 $$\{q_i,q_j\}=0,\quad\{p_i,p_j\}=0,\quad\{q_i,p_j\}=\delta_{ij}$$
 these are called the canonical commutation relations.  
 \end{defi}
-\begin{prop}[Poisson's theorem]
+\begin{prop}
 Any function $f(\mathbf{q}, \mathbf{p}, t)$ such that $\frac{\partial f}{\partial t}=0$ is a conserved quantity or constant of the motion. So any function $f(\mathbf{q}, \mathbf{p})$ that Poisson-commutes with $\mathcal{H}$ is a conserved quantity, called (first) integral of motion. 
 \end{prop}
 \begin{proof}
@@ -424,6 +457,23 @@ where $K(\mathbf{Q},\mathbf{P},t)$ is a new Hamiltonian.
 \begin{prop}
 Poisson bracket is invariant under a canonical transformation.
 \end{prop}
+\begin{remarks}[Action-angle variables]
+In general, the canonical transformation must satisfy the canonical commutation relations and will always keep the Poisson bracket invariant.\\[5pt]
+For an autonomous system with $n=1$, $\dot{q}=\frac{\partial H}{\partial p}$ and $\dot{p}=-\frac{\partial H}{\partial q}$ are the Hamilton's equations. We aim to make a canonical transformation $(q,p)\mapsto(Q,P)$ such that $H(Q,P)=H(P)$ depends only on $P$. In this case, the Hamilton's equations will take the simple form
+$$\dot{P}=0\implies P=\text{const},\quad\dot{Q}=\frac{dH}{dP}=\text{const}$$
+In fact, we know $H$ is constant, so $P$ could be any function of $H$.\\[5pt]
+In particular, we can relabel $(Q,P)$ as $(\theta,I)$, the action-angle variables, where $\theta$ is the angle and $I=\frac{1}{2\pi}\oint pdq$ is the action. The Hamilton's equations in action-angle variables reduce to 
+$$\dot{\theta}=\frac{dH}{dI},\quad\dot{I}=0$$
+with $\omega(I)=\frac{dH}{dI}$ being the angular frequency of the orbit.
+\end{remarks}
+\begin{remarks}[Generating function]
+Generating functions provide a practical way to find canonical transformations. Let $(\mathbf{q},\mathbf{p})$ be canonical variables with Hamiltonian $H$. Then Hamilton's Principle takes the form
+$$\delta\bigg[\int(\mathbf{p}\cdot d\mathbf{q}-Hdt)\bigg]=0$$
+If the new variables $(\mathbf{Q},\mathbf{P})$ are also canonical with Hamiltonian $K$, then we must have
+$$\delta\bigg[\int(\mathbf{P}\cdot d\mathbf{Q}-Kdt)\bigg]=0$$
+these two forms are equivalent if the integrands differ by a total differential, i.e. $\mathbf{p}\cdot d\mathbf{q}-Hdt=\mathbf{P}\cdot d\mathbf{Q}-Kdt+dF$. In this case, $F$ is called the generating function of the canonical transformation. 
+\end{remarks}
+\newpage
 \subsubsection{Relation to Quantum Mechanics}
 \subsubsection*{Commutators and Poisson Brackets}
 Quantum Mechanics uses Hermitian operators (or matrices) acting on complex vector spaces, to represent observables (physical quantities), such as $\mathbf{r}$, $\mathbf{p}$, $\mathbf{L}=\mathbf{r}\times\mathbf{p}$, $\mathbf{S}$. The commutator of two operators is defined as $[A,B]=AB-BA$. The canonical commutation relations are highly reminiscent of Poisson Brackets, with $[A,B]\sim i\hbar\{A,B\}$.\\[5pt] 
@@ -447,7 +497,7 @@ We see that classical mechanics is the `geometrical optics' limit of QM: the `ra
 
 \newpage
 \begin{qns}
-A particle of mass $m$ moves in a potential $V=\frac{1}{2}kr^2$ (2D Harmonic Oscillator). Find its Hamiltonian using a generalized coordinates $q_1=r$ and $q_2=mr^2\dot{\theta}$ (its angular momentum about the origin), and their conjugate `momenta. It is easy if you begin with the more natural choice $q_1=r$, $q_2=\theta$ and then interchange the notations for $p_2$ and $-q_2$ when you have reached the Hamiltonian.\\[5pt]
+A particle of mass $m$ moves in a potential $V=\frac{1}{2}kr^2$ (2D Harmonic Oscillator). Find its Hamiltonian using a generalized coordinates $q_1=r$ and $q_2=mr^2\dot{\theta}$ (its angular momentum about the origin), and their conjugate `momenta'. It is easy if you begin with the more natural choice $q_1=r$, $q_2=\theta$ and then interchange the notations for $p_2$ and $-q_2$ when you have reached the Hamiltonian.\\[5pt]
 Verify that Hamilton's equations give the expected motion. Notice that this goes sour if you write the Lagrangian $\mathcal{L}$ in terms of $q_1$, $\dot{q}_1$, $q_2$, $\dot{q}_2$ and try to define $p_1=\frac{\partial\mathcal{L}}{\partial\dot{q}_1}$, $p_2=\frac{\partial\mathcal{L}}{\partial\dot{q}_2}$, $H=\mathbf{p}\cdot\mathbf{\dot{q}}-\mathcal{L}$. That happens because the Lagrangian formulation depends on the $q$ really being position coordinates.
 \end{qns}
 \begin{ans}
@@ -779,6 +829,123 @@ We have the angular momentum to be the conjugate momentum $J=p_\theta=\frac{\par
     J=\frac{\partial\mathcal{L}}{\partial\omega}&=\frac{\partial}{\partial\omega}[\alpha\omega^{-2}((1-\omega^2\beta^2)^{3/2}-1)]\nonumber\\&=\frac{2\alpha}{\omega^3}\bigg[1-\bigg(1+\frac{\beta^2\omega^2}{2}\bigg)(1-\beta^2\omega^2)^{1/2}\bigg]\nonumber\\&=\frac{4M_0c^4}{3a^2\omega^3}\bigg[1-\sqrt{1-\frac{a^2\omega^2}{c^2}}\bigg(1+\frac{a^2\omega^2}{2c^2}\bigg)\bigg]\nonumber
 \end{align}
 where $M_0=\rho_0\pi a^2$. In the non-relativistic limit, $\omega\rightarrow 0$, $J=\frac{1}{2}M_0a^2\omega$.
+\end{ans}
+\newpage
+\subsection*{Tripos Question}
+\subsubsection*{2016 Q1}
+\begin{qns}
+A bead with mass $M$ slides, without friction, along an infinite fixed coil which constrains the bead’s cylindrical coordinates, $(r_B, \theta_B, z_B)$, to be $(a, \theta_B, b\theta_B)$. A massless spring with zero natural length and spring constant $k$ connects the bead to an unconstrained particle with mass m and cylindrical coordinates $(r, \theta, z)$. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{2016TP1Q1.JPG}
+\end{figure}
+\begin{enumerate}[label=(\alph*)]
+\item Show that, up to irrelevant constants and ignoring gravity, the Lagrangian for the system is:\\ 
+
+\hfill\textbf{[6]}
+$$\mathcal{L}=\frac{1}{2}m(\dot{r}^2+r^2\dot{\theta}^2+z^2)+\frac{1}{2}m(a^2\dot{\theta}_B^2+b^2\dot{\theta}_B^2)+\frac{1}{2}k(r^2-2ar\cos(\theta-\theta_B)+(z-b\theta_B)^2)$$
+\item Find the corresponding equations of motion for the particle and the bead.\hfill\textbf{[5]}
+\item The system has a helical symmetry. Find the corresponding conserved quantity.\hfill\textbf{[8]}
+\item The particle is released from rest at $(r_0, \theta_0, z_0)$. A time $T$ later it is at $(r_0, \theta_0, z_0 + \Delta z)$. If the mass of the bead is negligible, show that
+$$\Delta z=-\frac{2A}{b}$$
+where $A$ is a geometric property of the particle’s trajectory, and give the geometric interpretation of $A$.\hfill\textbf{[6]}
+\end{enumerate}
+\end{qns}
+\begin{ans}\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item The kinetic energies of the free particle and the bead are respectively $\frac{1}{2}m(\dot{r}^2+r^2\dot{\theta}^2+\dot{z}^2)$ and $\frac{1}{2}M(a^2\dot{\theta}_B^2+b^2\dot{\theta}_B^2)$. The potential energy of the string is
+$$V=\frac{1}{2}k((r\cos\theta-a\cos\theta_B)^2+(r\sin\theta-a\sin\theta_B)^2+(z-b\theta_B)^2)=\frac{1}{2}k(r^2+a^2-2ar\cos(\theta-\theta_B)+(z-b\theta_B)^2)$$
+where $\cos(\theta-\theta_B)=\cos\theta\cos\theta_B+\sin\theta\sin\theta_B$. The Lagrangian is then
+$$\mathcal{L}=\frac{1}{2}m(\dot{r}^2+r^2\dot{\theta}^2+z^2)+\frac{1}{2}m(a^2\dot{\theta}_B^2+b^2\dot{\theta}_B^2)+\frac{1}{2}k(r^2+a^2-2ar\cos(\theta-\theta_B)+(z-b\theta_B)^2)$$
+but $\mathcal{L}$ is unique up to a constant, so we may discard $\frac{1}{2}ka^2=\text{const}$.
+\item Using the Euler-Lagrange equations:
+$$\frac{\partial\mathcal{L}}{\partial\theta}=kar\sin(\theta-\theta_B),\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{\theta}}=\frac{d}{dt}(mr^2\dot{\theta})=2m\dot{r}r\dot{\theta}+mr^2\ddot{\theta}$$
+$$\frac{\partial\mathcal{L}}{\partial r}=mr\dot{\theta}^2+kr-ak\cos(\theta-\theta_B),\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{r}}=m\ddot{r}$$
+$$\frac{\partial\mathcal{L}}{\partial\theta_B}=-kar\sin(\theta-\theta_B)-k(z-b\theta_B)b,\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{\theta}_B}=\ddot{\theta}_BM(a^2+b^2)$$
+which gives $ka\sin(\theta-\theta_B)=mr\ddot{\theta}+2m\dot{r}\dot{\theta}$, $m\ddot{r}=mr\dot{\theta}^2-kr+ka\cos(\theta-\theta_B)$ and $\ddot{\theta}_BM(a^2+b^2)=-kar\sin(\theta-\theta_B)-k(z-b\theta_B)$.
+\item The potential $V(r,\theta-\theta_B,z-\theta_Bb)$ has helical symmetry, i.e. invariant under $\theta\rightarrow\theta+c$, $\theta_B\rightarrow\theta_B+c$ and $z\rightarrow z+cb$. In another words, invariant under simultaneous rotation and elevation of both masses. It follows that the Lagrangian must have the form $\mathcal{L}(\dot{r},\dot{\theta},\dot{z},\dot{\theta}_B,r,\theta-\theta_B,z-b\theta_B)$, and so
+$$\frac{\partial\mathcal{L}}{\partial\theta_B}=-\frac{\partial\mathcal{L}}{\partial\theta}-b\frac{\partial\mathcal{L}}{\partial z}$$
+which upon applying Euler-Lagrange equations, we have
+$$\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\theta_B}=-\frac{d}{dt}\bigg(\frac{\partial\mathcal{L}}{\partial\theta}\bigg)-b\frac{d}{dt}\bigg(\frac{\partial\mathcal{L}}{\partial z}\bigg)\implies\frac{d}{dt}\bigg(\frac{\partial\mathcal{L}}{\partial\dot{\theta}_B}+\frac{\partial\mathcal{L}}{\partial\dot{\theta}}+b\frac{\partial\mathcal{L}}{\partial\dot{z}}\bigg)=0$$
+Hence, the following quantity is conserved:
+$$J=\frac{\partial\mathcal{L}}{\partial\dot{\theta}_B}+\frac{\partial\mathcal{L}}{\partial\dot{\theta}}+b\frac{\partial\mathcal{L}}{\partial\dot{z}}=M(a^2+b^2)\dot{\theta}_B+mr^2\dot{\theta}+bm\dot{z}$$
+\item The particle is released from rest, so $J(t=0)=0$ and $J=0$ $\forall t$. Since we have $M=0$ as well,
+$$0=J=mr^2\dot{\theta}+bm\dot{z}\implies\int_0^Tr^2\dot{\theta}dt=-b\int_0^T\dot{z}dt=-b\Delta z\implies\Delta z=-\frac{2}{b}\bigg(\frac{1}{2}\int_{t=0}^{t=T}r^2d\theta$$
+If the particle's trajectory is projected into the horizontal $(r,\theta)$ plane, it forms a closed loop and $A=\frac{1}{2}\int r^2d\theta$ is the area of this loop.
+\end{enumerate}
+\end{ans}
+\subsubsection*{2017 Q2}
+\begin{qns}
+A long solenoid with length $l$ and radius $a$ is centered on the $z$ axis and generates a cylindrically symmetric magnetic field $\mathbf{B}(\rho, z)$, in cylindrical coordinates $(\rho, \theta, z)$. This field is uniform inside the solenoid, $\mathbf{B}=B\mathbf{\hat{z}}$, and negligible outside. A particle with mass $m$ and charge $q$ is fired towards the solenoid from a large distance away with large initial velocity $v\mathbf{\hat{z}}$ and initial radius $\rho_0<a$.
+\begin{enumerate}[label=(\alph*)]
+\item Show that the relativistic Lagrangian for the particle can be written as
+$$\mathcal{L}=-mc^2\sqrt{1-\frac{\dot{z}^2+\dot{\rho}^2+\rho^2\dot{\theta}^2}{c^2}}-V$$
+where $V=0$ outside and $-q\rho^2\dot{\theta}B/2$ inside.\hfill\textbf{[5]}
+\item The Lagrangian has cylindrical symmetry and does not depend explicitly on time. Find the corresponding conserved quantities, and (given the above initial conditions) find $\dot{\theta}$ for the particle inside the solenoid.\hfill\textbf{[5]}
+\item Find the equations of motion for $z$ and $\rho$ inside and outside the solenoid, and discuss whether $\dot{z}$ is a constant of the motion.\hfill\textbf{[4]}
+\item Find the full motion of the particle within the solenoid and draw a
+diagram of its path. You may assume without proof that $\rho$ and $\dot{\rho}$ are continuous when the particle enters the solenoid.\\
+
+\hfill\textbf{[7]}
+\item Neglecting variations in $\dot{z}$ (which is justified if $v$ is large enough) show that, if a non-interacting beam of particles with equal initial velocity passes through the solenoid, it will be focussed to a point on the $z$-axis a distance
+$$f=\frac{v}{\omega}\cot\frac{\omega l}{v}$$
+beyond the end of the solenoid, and give an expression for $\omega$. Assume $l < v\pi/(2\omega)$.\hfill\textbf{[4]}
+\end{enumerate}
+In cylindrical polar coordinates
+$$\boldsymbol{\nabla}\times\mathbf{A}=\bigg(\frac{1}{\rho}\frac{\partial A_z}{\partial\theta}-\frac{\partial A_\theta}{\partial A_z}\bigg)\boldsymbol{\hat{\rho}}+\bigg(\frac{\partial A_\rho}{\partial A_z}-\frac{\partial A_z}{\partial\rho}\bigg)\boldsymbol{\hat{\theta}}+\frac{1}{\rho}\bigg(\frac{\partial(\rho A_\theta)}{\partial\rho}-\frac{\partial A_\rho}{\partial\theta}\bigg)\mathbf{\hat{z}}$$
+\end{qns}
+\begin{ans}\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item The general form for the Lagrangian of a relativistic particle moving in an EM field is
+$$\mathcal{L}=-\frac{mc^2}{\gamma}-q(\phi-\mathbf{v}\cdot\mathbf{A})$$
+The velocity at time $t$ is
+$$\mathbf{v}=\dot{z}\mathbf{\hat{z}}+\dot{\rho}\boldsymbol{\hat{\rho}}+\rho\dot{\theta}\boldsymbol{\hat{\theta}}\implies v^2=\dot{z}^2+\dot{\rho}^2+\rho^2\dot{\theta}^2$$
+$\mathbf{A}$ in the solenoid, inherits the cylindrical symmetry of the problem since $\mathbf{B}=B\mathbf{\hat{z}}$, so $\mathbf{A}=A(\rho,z)\boldsymbol{\hat{\theta}}$ and from the given formula $\boldsymbol{\nabla}\times\mathbf{A}$ in cylindrical polars, we must have $\rho^{-1}\partial_\rho(\rho A)=B\implies A(\rho,z)=\frac{1}{2}B\rho$. The potential part of the Lagrangian is 0 outside and $-q(-\rho\hat{\theta}\frac{1}{2}B\rho)$ inside. This gives 
+$$\mathcal{L}=-mc^2\sqrt{1-\frac{\dot{z}^2+\dot{\rho}^2+\rho^2\dot{\theta}^2}{c^2}}-V$$
+where $V=0$ outside and $-q\rho^2\dot{\theta}B/2$ inside.
+\item Time invariance means the Hamiltonian is conserved. With the canonical momenta, the Hamiltonian can be found by performing a Legendre transform on the Lagrangian.
+$$p_\theta=\frac{\partial\mathcal{L}}{\partial\dot{\theta}}=q\rho A+\gamma m\rho^2\dot{\theta},\quad p_z=\gamma m\dot{z},\quad p_\rho=\gamma m\dot{\rho}$$
+$$\implies H=p_z\dot{z}+p_\rho\dot{\rho}+p_\theta\dot{\theta}-\mathcal{L}=\gamma mc^2$$
+Hence, $\gamma$ (and in turn, the particle speed) is a constant of motion. The cylindrical symmetry suggests that $p_\theta=q\rho A+\gamma m\rho^2\dot{\theta}$ is conserved. At $t=0$, $\dot{\theta}=0=A\implies p_\theta=0$. Hence, inside the solenoid we have
+$$\dot{\theta}=-\frac{q\rho A}{\gamma m\rho^2}=-\frac{qB}{2\gamma m}$$
+
+\item 
+
+\item 
+
+\item
+\end{enumerate}
+\end{ans}
+\subsubsection*{2018 Q1}
+\begin{qns}
+
+\end{qns}
+\begin{ans}
+
+\end{ans}
+\newpage
+\subsubsection*{2018 Q2}
+\begin{qns}
+
+\end{qns}
+\begin{ans}
+
+\end{ans}
+\newpage
+\subsubsection*{2019 Q1}
+\begin{qns}
+
+\end{qns}
+\begin{ans}
+
+\end{ans}
+\newpage
+\subsubsection*{2020 Q1}
+\begin{qns}
+
+\end{qns}
+\begin{ans}
+
 \end{ans}
 \newpage
 \section{Classical Field Theory}
