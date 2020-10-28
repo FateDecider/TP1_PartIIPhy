@@ -874,6 +874,7 @@ $$0=J=mr^2\dot{\theta}+bm\dot{z}\implies\int_0^Tr^2\dot{\theta}dt=-b\int_0^T\dot
 If the particle's trajectory is projected into the horizontal $(r,\theta)$ plane, it forms a closed loop and $A=\frac{1}{2}\int r^2d\theta$ is the area of this loop.
 \end{enumerate}
 \end{ans}
+\newpage
 \subsubsection*{2017 Q2}
 \begin{qns}
 A long solenoid with length $l$ and radius $a$ is centered on the $z$ axis and generates a cylindrically symmetric magnetic field $\mathbf{B}(\rho, z)$, in cylindrical coordinates $(\rho, \theta, z)$. This field is uniform inside the solenoid, $\mathbf{B}=B\mathbf{\hat{z}}$, and negligible outside. A particle with mass $m$ and charge $q$ is fired towards the solenoid from a large distance away with large initial velocity $v\mathbf{\hat{z}}$ and initial radius $\rho_0<a$.
@@ -908,44 +909,216 @@ $$p_\theta=\frac{\partial\mathcal{L}}{\partial\dot{\theta}}=q\rho A+\gamma m\rho
 $$\implies H=p_z\dot{z}+p_\rho\dot{\rho}+p_\theta\dot{\theta}-\mathcal{L}=\gamma mc^2$$
 Hence, $\gamma$ (and in turn, the particle speed) is a constant of motion. The cylindrical symmetry suggests that $p_\theta=q\rho A+\gamma m\rho^2\dot{\theta}$ is conserved. At $t=0$, $\dot{\theta}=0=A\implies p_\theta=0$. Hence, inside the solenoid we have
 $$\dot{\theta}=-\frac{q\rho A}{\gamma m\rho^2}=-\frac{qB}{2\gamma m}$$
-
-\item 
-
-\item 
-
-\item
+\item Using Euler-Lagrange equations, the $z$-equation of motion is
+$$\frac{\partial\mathcal{L}}{\partial z}=0,\quad \frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{z}}=\gamma m\ddot{z}$$
+So, $\dot{z}$ is a constant of motion, but only outside and inside the solenoid. This constant differs across regions and changes as the particle enters the solenoids, changing $\dot{\theta}$ as a result. this is true since $\gamma$ is conserved. Using the Euler-Lagrange equations again, the $\rho$-equation of motion is
+$$\frac{\partial\mathcal{L}}{\partial\rho}=m\gamma\rho\dot{\theta}^2+q\rho\dot{\theta}B,\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{\rho}}=\gamma m\ddot{\rho}$$
+where the $B$ term is zero outside. Now, $\dot{\theta}=-\frac{qB}{2\gamma m}$ inside. Let this be $\dot{\theta}:=-\omega$, then we have
+$$\gamma m\ddot{\rho}=m\gamma\rho\omega^2+q\rho B\bigg(-\frac{qB}{2\gamma m}\bigg)=-\frac{q^2B^2\rho}{4m\gamma}$$
+We thus have the simple harmonic motion equation for $\rho$, i.e. $\ddot{\rho}=-\rho\omega^2$.
+\item Assume $\rho$, $\dot{\rho}$ continuous, we have
+$$\theta=-\omega t,\quad\rho=\rho_0\cos\omega t,\quad z=v_i$$
+for some $v_i$ and $\rho_0$. Since the particle velocity is a constant of motion, we have $v^2=v_i^2+\rho_0^2\omega^2$. Cast $\rho$ into Cartesians:
+$$x=\rho\cos\theta=\rho_0\cos^2\omega t=0.5\rho_0(1+\cos2\omega t),\quad y=\rho\sin\theta=\rho_0\cos\omega t\sin\omega t=0.5\rho_0\sin2\omega t$$
+The motion is a helix with the cyclotron frequency $2\omega$ that points along $\mathbf{\hat{z}}$ and has radius $\rho_0/2$ and centre at Cartesian coordinates $(\rho_0/2,0)$.
+\item Outside the solenoid, the particle moves in a straight line. After a time $T$, the particle's $\rho$ decreases from a certain value to zero, effectively being focused to a point on the $z$-axis. This value is obtained at time $t'=l/v$, i.e. the time it takes to traverse the entire solenoid. Hence,
+$$T=\bigg|\frac{\rho(t=t')}{\dot{\rho}}\bigg|=\bigg|\frac{\rho_0\cos(\omega l/v)}{-\rho_0\omega\sin(\omega l/v)}\bigg|=\frac{1}{\omega}\cot\frac{\omega l}{v}$$
+This focal length is $f=vT$ as given.
 \end{enumerate}
 \end{ans}
+\newpage
 \subsubsection*{2018 Q1}
 \begin{qns}
-
+The action for a system consisting of a relativistic charged particle moving in an electromagnetic field is given by
+$$S=-\int mc^2 d\tau-\int eA_\mu dx^\mu (t)$$
+where $x^\mu=(ct,\mathbf{x})$, $A^\mu=(\phi/c,\mathbf{A})$, and $\tau$ is the proper time.
+\begin{enumerate}[label=(\alph*)]
+\item Derive the equations of motion in terms of the electric and magnetic fields, given by $\mathbf{E} = −\boldsymbol{\nabla}\phi −\frac{\partial}{\partial t}\mathbf{A}$ and $\boldsymbol{B} = \boldsymbol{\nabla}\times\mathbf{A}$, respectively.\hfill\textbf{[8]}
+\item Suppose that $\mathbf{B} = \boldsymbol{0}$, that $\mathbf{E}$ is constant and that at $t = 0$ the particle has velocity $\mathbf{v_0}$. Find the subsequent velocity of the particle.\hfill\textbf{[5]}
+\item  Find the limiting velocity of the particle as $t\rightarrow\infty$.\hfill\textbf{[3]}
+\item Suppose that instead $\mathbf{E} = \boldsymbol{0}$ (and generically $\mathbf{B}\neq\boldsymbol{0}$). Show that $\gamma$, and hence the total speed, are constant.\hfill\textbf{[4]}
+\item Suppose now that $\mathbf{E} = \boldsymbol{0}$ and $\mathbf{B}$ is constant. Show that the time dependence of the perpendicular velocity vector $\mathbf{v_\perp}=\mathbf{v}-\mathbf{B}\frac{(\mathbf{v}\cdot\mathbf{B})}{B^2}$ is periodic and find the period.\hfill\textbf{[5]}
+\end{enumerate}
 \end{qns}
-\begin{ans}
-
+\begin{ans}\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item The proper time is related to time by $dt=\gamma d\tau$, with the 4-vector being $dx^\mu=\frac{dx^\mu}{dt}dt$. The action is then
+$$S=-\int\frac{mc^2}{\gamma}dt-\int eA_\mu\frac{dx^\mu}{dt}dt$$
+where $A_\mu\frac{dx^\mu}{dt}=-\phi+\mathbf{A}\cdot\mathbf{v}$. By the definition of action, i.e. $S=\int\mathcal{L}dt$, we have the Lagrangian to be
+$$\mathcal{L}=-\frac{mc^2}{\gamma}+e\mathbf{A}\cdot\mathbf{v}-e\phi$$
+The equations of motion follow from the Euler-Lagrange equations
+$$\frac{\partial\mathcal{L}}{\partial\mathbf{v}}=-e\boldsymbol{\nabla}\phi+e\boldsymbol{\nabla}(\mathbf{A}\cdot\mathbf{v}),\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\mathbf{v}}=\frac{d}{dt}\bigg(\gamma m\frac{\mathbf{v}}{c^2}c^2\bigg)+\frac{d}{dt}e\mathbf{A}=\frac{d}{dt}(\gamma m\mathbf{v})+e\frac{\partial\mathbf{A}}{\partial t}+e(\mathbf{v}\cdot\boldsymbol{\nabla})\mathbf{A}$$
+But $\boldsymbol{\nabla}(\mathbf{A}\cdot\mathbf{v})=\mathbf{v}\cdot\boldsymbol{\nabla}\mathbf{A}$ since $\mathbf{v}$ has no spatial dependence. We then finally use
+$$\mathbf{v}\times(\boldsymbol{\nabla}\times\mathbf{A})=(\boldsymbol{\nabla}\mathbf{A})\cdot\mathbf{v}-(\mathbf{v}\cdot\boldsymbol{\nabla})\mathbf{A}$$
+which can be shown by index notation. Finally, we must have
+$$\frac{d}{dt}(\gamma m\mathbf{v})=-e\frac{\partial\mathbf{A}}{\partial t}-e\boldsymbol{\nabla}\phi-e(\mathbf{v}\times(\boldsymbol{\nabla}\times\mathbf{A}))=e(\mathbf{E}+(\mathbf{v}\times\mathbf{B}))$$
+\item Integrate the equation of motion with respect to time, we have
+$$\gamma m\mathbf{v}=e\mathbf{E}t+m\gamma_0\mathbf{v_0}$$
+Dot it with itself, then divided by $m^2c^2$ and finally use $\gamma^2v^2/c^2=\gamma^2-1$:
+$$\gamma^2m^2v^2=|\mathbf{E}et+m\gamma_0\mathbf{v_0}|^2\implies\gamma=\sqrt{1+\frac{|e\mathbf{E}t+m\gamma_0\mathbf{v_0}|^2}{m^2c^2}}$$
+By definition of $\gamma$, we then have
+$$\mathbf{v}=\frac{e\mathbf{E}t/m+\gamma_0\mathbf{v_0}}{\sqrt{1+\frac{|e\mathbf{E}t+m\gamma_0\mathbf{v_0}|^2}{m^2c^2}}}$$
+\item For large times, $\mathbf{v}$ will be parallel (or anti-parallel) to $\mathbf{E}$ as long as $|\mathbf{v}|<c$, and this is independent of $\mathbf{v_0}$, i.e.
+$$\lim_{t\rightarrow\infty}\mathbf{v}=\frac{e\mathbf{E}}{|e\mathbf{E}|}c$$
+\item Dot the equation of motion with $\mathbf{v}$ to get
+$$\mathbf{v}\cdot\frac{d}{dt}(\gamma m\mathbf{v})=e\mathbf{v}\cdot(\mathbf{v}\times\mathbf{B})=0\implies 0=\frac{d\gamma}{dt}mc^2(1-\gamma^{-2})$$
+where $|\mathbf{v}|^2=c^2(1-\gamma^{-2})$. Since $\gamma\neq1$, we must have $\frac{d\gamma}{dt}=0$, i.e. $\gamma$ and in turn $v$ are both constants. 
+\item With $\mathbf{E}=\boldsymbol{0}$, the equation of motion is then
+$$\frac{d\mathbf{v}}{dt}=\frac{e}{m\gamma}(\mathbf{v}\times\mathbf{B})$$
+Take the time derivative:
+$$\frac{d^2\mathbf{v}}{dt^2}=\frac{e}{m\gamma}(\mathbf{\dot{v}}\times\mathbf{B})=\frac{e^2}{m^2\gamma^2}(\mathbf{v}\times\mathbf{B})\times\mathbf{B}=-\frac{e^2}{m^2\gamma^2}(\mathbf{v}B^2-\mathbf{B}(\mathbf{v}\cdot\mathbf{B}))=-\bigg(\frac{eB}{m\gamma}\bigg)^2\mathbf{v_\perp}$$
+This is a SHM equation with frequency $\omega=\frac{eB}{m\gamma}$.
+\end{enumerate}
 \end{ans}
 \newpage
 \subsubsection*{2018 Q2}
 \begin{qns}
-
+A massless rod of length $\ell$ makes an angle $\theta(t)$ with the vertical, has a point mass $m$ at one end, and is in a constant gravitational field $\mathbf{g} = g\mathbf{\hat{y}}$. The other end of the rod is attached to a horizontal line with a frictionless hinge, and connected to a point along the line by a massless spring of constant $k$ and zero rest length, as illustrated in the figure.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{2018TP1Q2.JPG}
+\end{figure}
+Let us call $s(t)$ the instantaneous horizontal displacement of the hinge from the origin (i.e., the fixed point of the spring).
+\begin{enumerate}[label=(\alph*)]
+\item Show that the Lagrangian for this system can be written in terms of the dimensionless variables $\eta(t) = s(t)/\ell$ and $\theta(t)$ as
+$$\mathcal{L}=\frac{1}{2}(\dot{\eta}^2+2\dot{\eta}\dot{\theta}\cos\theta+\dot{\theta}^2)+\frac{g}{\ell}\cos\theta-\frac{1}{2}\frac{\kappa}{m}\eta^2$$
+up to a multiplicative constant.\hfill\textbf{[10]}
+\item Find the equations of motion for this system. Then assume that the dynamical variables and their derivatives are small and show that the equations of motion expanded to linear order can be written as
+\begin{align}
+    \ddot{\theta}+\ddot{\eta}+\omega_0^2\theta&=0\nonumber\\\ddot{\theta}+\ddot{\eta}+\omega_1^2\eta&=0\nonumber
+\end{align}
+Find the values of the characteristic frequencies $\omega_0$ and $\omega_1$.\hfill\textbf{[8]}
+\item Assuming a solution of the form $\theta(t) = \theta_0\sin(\omega t)$, find the corresponding form for $\eta(t)$ and the allowed values of $\omega$. Consider the limit $k\rightarrow\infty$ and discuss briefly whether the result is consistent with your expectation or not.\hfill\textbf{[7]}
+\end{enumerate}
 \end{qns}
-\begin{ans}
-
+\begin{ans}\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item We have the coordinates
+$$x=\eta\ell+\ell\sin\theta,~y=\ell\cos\theta\implies\dot{x}=\dot{\eta}\ell+\ell\cos\theta\dot{\theta},~\dot{y}=-\ell\sin\theta\dot{\theta}$$
+We then have the kinetic energy to be
+$$T=\frac{1}{2}m(\dot{x}^2+\dot{y}^2)=\frac{1}{2}m(\dot{\eta}\ell+\ell\cos\theta\dot{\theta})^2+\ell^2\sin^2\theta\dot{\theta}^2=\frac{1}{2}m\ell^2(\dot{\eta}^2+2\dot{\eta}\cos\theta\dot{\theta}+\dot{\theta}^2)$$
+The potential energy is
+$$V=-mg\ell\cos\theta+\frac{1}{2}k\eta^2\ell^2$$
+The Lagrangian is
+$$\mathcal{L}=T-V=\frac{1}{2}m\ell^2(\dot{\eta}^2+2\dot{\eta}\cos\theta\dot{\theta}+\dot{\theta}^2)+mg\ell\cos\theta-\frac{1}{2}k\eta^2\ell^2$$
+But since the Lagrangian is unique up to a multiplicative constant, we can drop out the $m\ell^2$ factor.
+\item The equation of motion is obtained from the Euler-Lagrange equations
+$$\frac{\partial\mathcal{L}}{\partial\theta}=-\dot{\eta}\dot{\theta}\sin\theta-\frac{g}{\ell}\sin\theta,\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{\theta}}=\ddot{\theta}+\ddot{\eta}\cos\theta-\sin\theta\dot{\eta}\dot{\theta}$$
+$$\frac{\partial\mathcal{L}}{\partial\eta}=-\frac{k}{m}\eta,\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{\eta}}=\ddot{\eta}+\ddot{\theta}\cos\theta-\sin\theta\dot{\theta}^2$$
+Using small angle approximation such that $\sin\theta\approx\theta$, $\cos\theta\approx1$ and that $\dot{\eta}, \dot{\theta}$ small so that products of time derivatives are negligible. In that case, we have
+$$0=\ddot{\theta}+2\dot{\eta}\dot{\theta}\sin\theta+\frac{g}{\ell}\sin\theta+\ddot{\eta}\cos\theta\approx\ddot{\theta}+\ddot{\eta}+\frac{g}{\ell}\theta$$
+$$0=\ddot{\eta}+\frac{k}{m}\eta+\ddot{\theta}\cos\theta-\sin\theta\dot{\theta}^2\approx\ddot{\theta}+\ddot{\eta}+\frac{k}{m}\eta$$
+allowing us to read off as $\omega_0^2=g/\ell$ and $\omega_1^2=k/m$.
+\item The equations of motion expanded to linear order suggests $\eta=\frac{\omega_0^2}{\omega_1^2}\theta$, with $\theta(t)=\theta_0\sin\omega t$. This gives us
+$$\ddot{\theta}=-\omega^2\theta,\quad\ddot{\eta}=-\frac{\omega_0^2\omega^2}{\omega_1^2}\theta$$
+Plug into the equations of motion will give
+$$\omega^2\bigg(1+\frac{\omega_0^2}{\omega_1^2}\bigg)=\omega_0^2\implies\omega^2=\frac{\omega_0^2\omega_1^2}{\omega_0^2+\omega_1^2}$$
+As $k\rightarrow\infty$, $\omega_1^2\rightarrow\infty$, $\eta\rightarrow 0$ and hence $\omega^2=\omega_0^2=g/l$. The top hinge is fixed with infinite spring stiffness, within the approximation regime of small oscillations.
+\end{enumerate}
 \end{ans}
 \newpage
 \subsubsection*{2019 Q1}
-\begin{qns}
-
+\begin{qns}\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item Describe what is meant by a holonomic constraint in Lagrangian classical mechanics and give an example of a system with a holonomic constraint.\hfill\textbf{[4]}
+\item A uniform cylinder of mass $m$ and radius $r$ rolls without slipping inside a larger cylinder of radius $R$. The angles $\theta$ and $\phi$ are defined as in the Figure, where the black dots coincide when the rolling cylinder is at its lowest point.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{2019TP1Q2.JPG}
+\end{figure}
+By resolving the motion into the motion of the centre of mass and motion about the centre of mass, show that the kinetic energy may be written as\hfill\textbf{[5]}
+$$\frac{m}{2}(R-r)^2\dot{\theta}^2+\frac{m}{4}r^2(\dot{\phi}-\dot{\theta})^2$$
+\item Show that the no slip condition yields a holonomic constraint.\hfill \textbf{[3]}
+\item By writing down the Lagrangian, show that the system can exhibit small oscillations and find the corresponding oscillation frequency.\hfill\textbf{[6]}
+\item Discuss whether or not there is a frictional force present and whether or not the energy of the system is conserved.\hfill\textbf{[3]}
+\item Discuss whether or not angular momentum is conserved.\hfill\textbf{[2]}
+\item Discuss whether or not the system is holonomic for all possible motions.\hfill\textbf{[2]}
+\end{enumerate}
 \end{qns}
-\begin{ans}
-
+\begin{ans}\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item Holonomic constraints can be expressed in terms of generalized coordinates and time. The scenario in the question is one such example, if the oscillations are small enough.
+\item The motion of the Centre of Mass is purely rotational, in a circle of radius $R-r$ with angular velocity $\dot{\theta}$. Rotation of cylinder about its CoM in the rest frame is with angular velocity $\dot{\phi}-\dot{\theta}$. The kinetic energy is the sum of the translational kinetic energy and that due to self-rotation, i.e.
+$$T=\frac{1}{2}m(R-r)^2\dot{\theta}^2+\frac{1}{2}\frac{1}{2}mr^2(\dot{\phi}-\dot{\theta})^2$$
+\item The no slip condition gives $r\phi=R\theta$ and is a holonomic constraint.
+\item The potential energy is $V=-mg(R-r)\cos\theta$, and so the Lagrangian is
+\begin{align}
+\mathcal{L}=T-V&=\frac{1}{2}m(R-r)^2\dot{\theta}^2+\frac{1}{4}mr^2(\dot{\phi}-\dot{\theta})^2+mg(R-r)\cos\theta\nonumber\\&=\frac{1}{2}m(R-r)^2\dot{\theta}^2+\frac{1}{4}m(R-r)^2\dot{\theta}^2+mg(R-r)\cos\theta\nonumber\\&=\frac{3}{4}m(R-r)^2\dot{\theta}^2+mg(R-r)\cos\theta\nonumber
+\end{align}
+where the no-slip condition gives $(\dot{\phi}-\dot{\theta})=\frac{R-r}{r}\dot{\theta}$. The equations of motion is obtained from the Euler-Lagrange equations
+$$\frac{\partial\mathcal{L}}{\partial\theta}=-mg(R-r)\sin\theta,\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{\theta}}=\frac{3}{2}m(R-r)^2\ddot{\theta}$$
+which gives $(R-r)\ddot{\theta}=\frac{2}{3}g\theta$, which is a SHM equation with oscillation frequency $\omega^2=\frac{2g}{3(R-r)}$.
+\item There must be friction present to ensure the cylinder rolls without slipping. However, this force does no work because the motion is always normal to it. Hence, the total energy is conserved, consistent with the fact that $\mathcal{L}$ is explicitly independent of time.
+\item The canonical momentum is not conserved, i.e.
+$$\frac{d}{dt}p_\theta=\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{\theta}}=\frac{\partial\mathcal{L}}{\partial\theta}\neq 0$$
+i.e. the angular momentum is not conserved due to gravity.
+\item For large motions, the small cylinder can lose contact with the larger cylinder, and cannot be expressed in terms of holonomic constraints.
+\end{enumerate}
 \end{ans}
-\newpage
 \subsubsection*{2020 Q1}
 \begin{qns}
-
+Two identical beads of mass $m$ are each attached to a pivot point P by a light spring of constant $\kappa$ and unstretched length ` $\ell= 0$, in the presence of a gravitational acceleration $g$. They are further connected to one another by a spring of constant $\kappa'$ and unstretched length $\ell'>0$. The centres of the two beads are confined to move within a vertical plane through P, as sketched below.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.75]{2020TP1Q1.JPG}
+\end{figure}
+\begin{enumerate}[label=(\alph*)]
+\item Show that the Lagrangian of the system can be written as
+$$\mathcal{L}=m(\dot{X}^2+\dot{Y}^2)-2mg(Y-\alpha)-\kappa[X^2+(Y-\alpha)^2]+m(\dot{x}^2+\dot{y}^2)-2\kappa'\bigg(\sqrt{x^2+y^2}-\frac{\ell'}{2}\bigg)^2$$
+where $X = (x_1 + x_2)/2$, $Y = (y_1 + y_2)/2 + \alpha$, $x = (x_1 − x_2)/2$, $y = (y_1 − y_2)/2$. Here, $(x_1, y_1)$ and $(x_2, y_2)$ denote the coordinates of the centres of the two beads in the Cartesian reference frame given by the dashed axes in the figure, and $\alpha$ is a generic constant. Find the Euler-Lagrange equations of motion of the system.\hfill\textbf{[7]}
+\item Find the equilibrium positions of the beads and show that, for an appropriate choice of $\alpha$, they satisfy\hfill\textbf{[6]}
+$$X=Y=0,\quad x^2+y^2=\bigg(\frac{\kappa'\ell'}{\kappa+2\kappa'}\bigg)^2$$
+\item For the value of $\alpha$ chosen in (b), find the normal modes and the corresponding frequencies of small oscillations about the equilibrium positions.\hfill\textbf{[8]}
+\item Discuss the continuous symmetries of the Lagrangian and find the corresponding conserved quantities.\hfill\textbf{[4]}
+\end{enumerate}
 \end{qns}
-\begin{ans}
-
+\newpage
+\begin{ans}\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item The kinetic energy is
+\begin{align}
+    T&=\frac{1}{2}m(\dot{x}_1^2+\dot{y}_1^2+\dot{x}_2^2+\dot{y}_2^2)\nonumber\\&=m(0.25(\dot{x}_1+\dot{x}_2)^2+0.25(\dot{y}_1+\dot{y}_2)^2+0.25(\dot{x}_1-\dot{x}_2)^2+0.25(\dot{y}_1-\dot{y}_2)^2)\nonumber\\&=m(\dot{X}^2+\dot{x}^2+\dot{Y}^2+\dot{y}^2)\nonumber
+\end{align}
+The potential energy is
+\begin{align}
+    V&=mg(y_1+y_2)+\frac{1}{2}\kappa(x_1^2+y_1^2)+\frac{1}{2}\kappa(x_2^2+y_2^2)+\frac{1}{2}\kappa'(\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}-\ell')^2\nonumber\\&=2mg(Y-\alpha)+\kappa(0.5x_1^2+0.5x_2^2+0.5y_1^2+0.5y_2^2)+0.5\kappa'(2\sqrt{(0.5(x_1-x_2))^2+(0.5(y_1-y_2))^2}-\ell')^2\nonumber\\&=2mg(Y-\alpha)+\kappa(X^2+(Y-\alpha)^2+x^2+y^2)+2\kappa'(\sqrt{x^2+y^2}-0.5\ell')^2\nonumber
+\end{align}
+The Lagrangian is then
+$$\mathcal{L}=T-V=m(\dot{X}^2+\dot{Y}^2)-2mg(Y-\alpha)-\kappa[X^2+(Y-\alpha)^2]+m(\dot{x}^2+\dot{y}^2)-2\kappa'\bigg(\sqrt{x^2+y^2}-\frac{\ell'}{2}\bigg)^2$$
+The equation of motion is satisfied by the Euler-Lagrange equations
+$$\frac{\partial\mathcal{L}}{\partial X}=-2\kappa X,\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{X}}=\frac{d}{dt}(2m\dot{X})=2m\ddot{X}\implies m\ddot{X}=-\kappa X$$
+$$\frac{\partial\mathcal{L}}{\partial Y}=-2\kappa(Y-\alpha)-2mg,\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{Y}}=\frac{d}{dt}(2m\dot{Y})=2m\ddot{Y}\implies m\ddot{Y}=-\kappa Y-mg+k\alpha$$
+$$\frac{\partial\mathcal{L}}{\partial x}=-2\kappa x-2\kappa'2(\sqrt{x^2+y^2}-0.5\ell')\frac{x}{\sqrt{x^2+y^2}}=-2\kappa x-\frac{4\kappa'x(\sqrt{x^2+y^2}-0.5\ell')}{\sqrt{x^2+y^2}},\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{x}}=\frac{d}{dt}2m\dot{x}=2m\ddot{x}$$
+$$\implies m\ddot{x}=-\kappa x-2\kappa'(\sqrt{x^2+y^2}-0.5\ell')\frac{x}{\sqrt{x^2+y^2}}$$
+$$\frac{\partial\mathcal{L}}{\partial y}=-2\kappa y-2\kappa'2(\sqrt{x^2+y^2}-0.5\ell')\frac{y}{\sqrt{x^2+y^2}}=-2\kappa y-\frac{4\kappa'y(\sqrt{x^2+y^2}-0.5\ell')}{\sqrt{x^2+y^2}},\quad\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{y}}=\frac{d}{dt}2m\dot{y}=2m\ddot{y}$$
+$$\implies m\ddot{y}=-\kappa y-2\kappa'(\sqrt{x^2+y^2}-0.5\ell')\frac{y}{\sqrt{x^2+y^2}}$$
+\item In equilibrium, $\ddot{X}=0=\ddot{Y}$, which gives us $X=0$, $Y=-(mg/k)+\alpha$. But $Y=0\implies\alpha=mg/k$. Also, $\ddot{x}=0=\ddot{y}$ which gives either $x=0=y$ which is not a valid solution since we needed $x^2+y^2>0$ to derive our equations of motion (and that this solution is physically not possible since in this configuration, there are net forces and the system is not in equilibrium) or the relative coordinate of one bead with respect to the other forms a circle of radius $\frac{\kappa'\ell'}{\kappa+2\kappa'}$, i.e.
+$$\sqrt{x^2+y^2}=\frac{\kappa'\ell'}{\kappa+2\kappa'}$$
+\item With $\alpha=mg/k$, we have that $X$ and $Y$ to be SHM equations with frequency $\Omega=\sqrt{\kappa/m}$ around the equilibrium position (0,0). The degenerate frequencies in both directions, due to the rotational symmetry in the $(X,Y)$-plane. We expand about the equilibrium $(x_0,y_0)$, i.e. $x=x_0+\delta x$ and $y=y_0+\delta y$. 
+$$x^2+y^2=(x_0+\delta x)^2+(y_0+\delta y)^2=x_0^2+y_0^2+2x_0\delta x+2y_0\delta y$$
+$$x^2+y^2=(x_0+\delta x)^2+(y_0+\delta y)^2=x_0^2+y_0^2+2x_0\delta x+2y_0\delta y$$
+$$\sqrt{x^2+y^2}=\sqrt{x_0^2+y_0^2}\bigg(1+\frac{2x_0\delta x+2y_0\delta y}{x_0^2+y_0^2}\bigg)^{1/2}\approx\sqrt{x_0^2+y_0^2}+\frac{x_0\delta x+y_0\delta y}{\sqrt{x_0^2+y_0^2}}$$
+Hence, expand the equations of motion:
+\begin{align}
+m\ddot{x}&=-(\kappa+2\kappa')x+\frac{x}{\sqrt{x^2+y^2}}\kappa'\ell'\nonumber\\\implies m\delta\ddot{x}&=\frac{x_0+\delta x}{\sqrt{x_0^2+y_0^2}}(\kappa'\ell'-\kappa'\ell'-\frac{\kappa+2\kappa'}{\sqrt{x_0^2+y_0^2}}(x_0\delta x+y_0\delta y))\nonumber\\&=\frac{-(\kappa+2\kappa')^3}{\kappa'^2\ell'^2}x_0(x_0\delta x+y_0\delta y)\nonumber
+\end{align}
+Similarly, $m\delta\ddot{y}=-\frac{(\kappa+2\kappa')^3}{\kappa'^2\ell'^2}y_0(x_0\delta x+y_0\delta y)$. We can then cast them into a matrix form
+$$\begin{pmatrix}\delta\ddot{x}\\\delta\ddot{y}\\\end{pmatrix}=-\frac{(\kappa+2\kappa')^3}{\kappa'^2\ell'^2m}\begin{pmatrix}x_0^2&x_0y_0\\x_0y_0&y_0^2\\\end{pmatrix}\begin{pmatrix}\delta x\\\delta y\\\end{pmatrix}$$
+Set determinant as zero, we then have the eigenvalues to be
+$$0=\det\begin{pmatrix}x_0^2-\lambda&x_0y_0\\x_0y_0&y_0^2-\lambda\\\end{pmatrix}=\lambda^2-\lambda(x_0^2+y_0^2)\implies\lambda=0,~x_0^2+y_0^2$$
+Scale the eigenvalues back by a factor:
+$$\omega=0,\quad\omega^2=(x_0^2+y_0^2)\frac{(\kappa+2\kappa')^3}{(\kappa'\ell')^2m}=\frac{\kappa'^2\ell'^2}{(\kappa+2\kappa')^2}\frac{(\kappa+2\kappa')^3}{(\kappa'\ell')^2m}=\frac{\kappa+2\kappa'}{m}$$
+where their eigenvectors respectively are
+$$\begin{pmatrix}\delta x\\\delta y\\\end{pmatrix}=\begin{pmatrix}y_0\\-x_0\\\end{pmatrix},\quad\begin{pmatrix}\delta x\\\delta y\\\end{pmatrix}=\begin{pmatrix}x_0\\y_0\\\end{pmatrix}$$
+where the former (zero-frequency mode) is due to rotational symmetry in the $(x,y)$ plane.
+\item We see that the Lagrangian $\mathcal{L}$ does not depend explicitly on time and hence the Hamiltonian is conserved. Only the action and not the Lagrangian is invariant under time translations. We define $\boldsymbol{r}=(x,y)^T$ and $\mathbf{R}=(X,Y)^T$. Then, 
+$$\mathcal{L}=m(\dot{r}^2+\dot{R}^2)+\frac{m^2g^2}{\kappa}-\kappa(r^2+R^2)-2\kappa'(r-0.5\ell')^2$$
+which is clearly invariant under independent rotations, i.e. $\mathbf{r}\rightarrow M\mathbf{r}$ and $\mathbf{R}\rightarrow M'\mathbf{R}$. We cast into plane polar coordinates $\mathbf{r}=(r,\theta)^T$ and $\mathbf{R}=(R,\phi)^T$:
+$$\mathcal{L}=m(\dot{r}^2+r^2\dot{\theta}^2+\dot{R}^2+R^2\phi^2)+\frac{m^2g^2}{\kappa}-\kappa(r^2+R^2)-2\kappa'(r-0.5\ell')^2$$
+which is independent of $\theta$ and $\phi$. Hence, their canonical momenta are conserved.
+$$\frac{dp_\theta}{dt}=\frac{d}{dt}\frac{\partial\mathcal{L}}{\partial\dot{\theta}}=\frac{\partial\mathcal{L}}{\partial\theta}=0$$
+which implies $p_\theta=\frac{\partial\mathcal{L}}{\partial\dot{\theta}}=2mr^2\dot{\theta}$ is conserved. Similarly, $p_\phi=2mR^2\dot{\phi}$ is conserved. But, $p_\theta\propto(x\dot{y}-y\dot{x})$ and $p_\phi\propto(X\dot{Y}-Y\dot{X})$. The sum of the two conserved quantities is proportional to $J^z_{tot}-\frac{mg}{\kappa}p_{tot}^x$, i.e. the $z$-component of the total angular momentum, and the $x$-component of the total linear momentum of the system.
+\end{enumerate}
 \end{ans}
 \newpage
 \section{Classical Field Theory}
